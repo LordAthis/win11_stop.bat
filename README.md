@@ -1,27 +1,34 @@
 # win11_stop.bat
 Win11  Prevent update (Frissítés megakadályozása)
 ----------------------------------------
-Alul Magyar nyelvű leírást is találsz!
-----------------------------------------
 
-Blog post about it here:
-https://lordathis.blogspot.com/p/win11-ne.html
+Alul Magyar nyelvű leírást is találsz!
+
+----------------------------------------
 
 
 Windows 11 Update Manager (Update Blocker)
-This project provides an automated solution to prevent a forced upgrade to Windows 11 on Windows 10 systems. It is especially useful for laptops that are not compatible, but update unsolicited, after which the machine often needs to be reinstalled (pp. 1-2).
+----------------------------------------
+
+This project provides an automated solution to prevent a forced upgrade to Windows 11 on Windows 10 systems. It is especially useful for laptops that are not compatible, but update unsolicited, after which the machine often needs to be reinstalled.
+
 🚀 Key features
-Automatic version detection: Queries the current Windows 10 version (e.g. 22H2) and fixes the system to it (p. 3).
-Registry-based blocking: Modifies the Registry using the safest method (p. 1).
+----------------------------------------
+Automatic version detection: Queries the current Windows 10 version (e.g. 22H2) and fixes the system to it).
+Registry-based blocking: Modifies the Registry using the safest method.
 Service Management: Temporarily stops the Windows Update (wuauserv) and BITS services (pp. 8-9) for a secure effect.
-Reset option (Unlock): You can easily restore the original state at any time (pp. 5, 12).
-Logging: Records all operations in the file win11_update_log.txt with date and time (pp. 11, 13).
+Reset option (Unlock): You can easily restore the original state at any time.
+Logging: Records all operations in the file win11_update_log.txt with date and time.
+
 🛠️ Usage
+----------------------------------------
 You have two options for running the script:
 Download: Download win11_stop_prevent_update.bat.
 Manual creation: Copy the code below into a Notepad file and save it with a .bat extension.
-Important: The file must always be run as Administrator! (p. 3)
+Important: The file must always be run as Administrator!
+
 📄 Script code (Batch)
+----------------------------------------
 batch
 @echo off
 setlocal enableddelayedexpansion
@@ -112,32 +119,50 @@ net start wuauserv >nul 2>&1
 goto MENU
 )
 exit
-Use code sparingly.
+
+🔍 Advanced functions and fault tolerance
+----------------------------------------
+The used script contains more safety and convenience functions compared to the factory default solutions:
+Intelligent version query: If the system does not find the modern DisplayVersion value, it automatically searches for the older ReleaseId key, so it is reliable even on older Windows 10 builds.
+Run quietly: By using the >nul 2>&1 switches, the script hides unnecessary error messages, keeping the user interface clean and transparent.
+Service coordination: Stops background processes for the duration of the change, so that Registry entries take effect immediately and without conflicts.
+Event log: Every run and its outcome (success/error) is recorded in the win11_update_log.txt file.
+
 
 📂 Technical background
-The script in HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate sets the ProductVersion value to "Windows 10" so that Windows Update will not offer Windows 11 (pp. 1, 4).
+----------------------------------------
+The script in HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate sets the ProductVersion value to "Windows 10" so that Windows Update will not offer Windows 11.
 Attention: It is recommended to create a system restore point before using the script. Running is at your own risk.
+
+Blog post about it here:
+----------------------------------------
+https://lordathis.blogspot.com/p/win11-ne.html
 
 ----------------------------------------
 
-Blog bejegyzés erről itt:
-https://lordathis.blogspot.com/p/win11-ne.html
-
 
 Windows 11 Frissítés Kezelő (Update Blocker)
-Ez a projekt egy automatizált megoldást kínál a Windows 11-re való kényszerített frissítés megakadályozására Windows 10-es rendszereken. Különösen hasznos olyan laptopok esetén, amelyek nem kompatibilisek, mégis kéretlenül frissítenek, ami után gyakran újra kell telepíteni a gépet (pp. 1-2).
+----------------------------------------
+
+Ez a projekt egy automatizált megoldást kínál a Windows 11-re való kényszerített frissítés megakadályozására Windows 10-es rendszereken. Különösen hasznos olyan laptopok esetén, amelyek nem kompatibilisek, mégis kéretlenül frissítenek, ami után gyakran újra kell telepíteni a gépet.
+
 🚀 Főbb jellemzők
-Automatikus verziófelismerés: Lekérdezi az aktuális Windows 10 verziót (pl. 22H2), és ehhez rögzíti a rendszert (p. 3).
-Registry alapú tiltás: A legbiztosabb módszerrel módosítja a Rendszerleíró adatbázist (p. 1).
-Szolgáltatás-menedzsment: A biztos hatás érdekében ideiglenesen leállítja a Windows Update (wuauserv) és a BITS szolgáltatásokat (pp. 8-9).
-Visszaállítási lehetőség (Unlock): Bármikor egyszerűen visszaállítható az eredeti állapot (pp. 5, 12).
-Naplózás: Minden műveletet a win11_update_log.txt fájlba rögzít dátummal és időponttal (pp. 11, 13).
+----------------------------------------
+Automatikus verziófelismerés: Lekérdezi az aktuális Windows 10 verziót (pl. 22H2), és ehhez rögzíti a rendszert.
+Registry alapú tiltás: A legbiztosabb módszerrel módosítja a Rendszerleíró adatbázist.
+Szolgáltatás-menedzsment: A biztos hatás érdekében ideiglenesen leállítja a Windows Update (wuauserv) és a BITS szolgáltatásokat.
+Visszaállítási lehetőség (Unlock): Bármikor egyszerűen visszaállítható az eredeti állapot.
+Naplózás: Minden műveletet a win11_update_log.txt fájlba rögzít dátummal és időponttal.
+
 🛠️ Használat
+----------------------------------------
 A szkript futtatásához két lehetőséged van:
 Letöltés: Töltsd le a win11_stop_prevent_update.bat fájlt.
 Manuális létrehozás: Másold ki az alábbi kódot egy Notepad fájlba, és mentsd el .bat kiterjesztéssel.
-Fontos: A fájlt minden esetben Rendszergazdaként kell futtatni! (p. 3)
+Fontos: A fájlt minden esetben Rendszergazdaként kell futtatni!
+
 📄 A szkript kódja (Batch)
+----------------------------------------
 batch
 @echo off
 setlocal enabledelayedexpansion
@@ -228,8 +253,24 @@ if /i "%rb%"=="N" (
     goto MENU
 )
 exit
-Körültekintően használja a kódot.
+
+🔍 Fejlett funkciók és hibatűrés
+----------------------------------------
+Az alkalmazott szkript több biztonsági és kényelmi funkciót tartalmaz a gyári alapmegoldásokhoz képest:
+Intelligens verziólekérdezés: Ha a rendszer nem találja a modern DisplayVersion értéket, automatikusan a régebbi ReleaseId kulcsot keresi meg, így régebbi Windows 10 build-eken is üzembiztos.
+Csendes futtatás: A >nul 2>&1 kapcsolók használatával a szkript elrejti a felesleges hibaüzeneteket, így a felhasználói felület tiszta és átlátható marad.
+Szolgáltatás-összehangolás: A módosítás idejére leállítja a háttérfolyamatokat, hogy a Registry-beírások azonnal és ütközésmentesen érvényesüljenek.
+Eseménynapló: Minden futtatásról és annak kimeneteléről (siker/hiba) bejegyzés készül a win11_update_log.txt fájlba.
+
 
 📂 Technikai háttér
-A szkript a HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate útvonalon rögzíti a ProductVersion értékét "Windows 10"-re, így a Windows Update nem fogja felajánlani a Windows 11-et (pp. 1, 4).
+----------------------------------------
+A szkript a HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate útvonalon rögzíti a ProductVersion értékét "Windows 10"-re, így a Windows Update nem fogja felajánlani a Windows 11-et.
 Figyelem: A szkript használata előtt javasolt rendszer-visszaállítási pont létrehozása. A futtatás saját felelősségre történik.
+
+
+Blog bejegyzés erről itt:
+----------------------------------------
+https://lordathis.blogspot.com/p/win11-ne.html
+
+
