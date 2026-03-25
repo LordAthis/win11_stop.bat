@@ -23,7 +23,7 @@ Logging: Records all operations in the file win11_update_log.txt with date and t
 🛠️ Usage
 ----------------------------------------
 You have two options for running the script:
-Download: Download win11_stop_prevent_update.bat.
+Download: Download [win11_stop_prevent_update.bat](https://raw.githubusercontent.com/LordAthis/win11_stop.bat/refs/heads/main/win11_stop_prevent_update.bat) .
 Manual creation: Copy the code below into a Notepad file and save it with a .bat extension.
 Important: The file must always be run as Administrator!
 
@@ -157,7 +157,7 @@ Naplózás: Minden műveletet a win11_update_log.txt fájlba rögzít dátummal 
 🛠️ Használat
 ----------------------------------------
 A szkript futtatásához két lehetőséged van:
-Letöltés: Töltsd le a win11_stop_prevent_update.bat fájlt.
+Letöltés: Töltsd le a [win11_stop_prevent_update.bat](https://raw.githubusercontent.com/LordAthis/win11_stop.bat/refs/heads/main/win11_stop_prevent_update.bat) fájlt.
 Manuális létrehozás: Másold ki az alábbi kódot egy Notepad fájlba, és mentsd el .bat kiterjesztéssel.
 Fontos: A fájlt minden esetben Rendszergazdaként kell futtatni!
 
